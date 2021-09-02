@@ -15,9 +15,20 @@ export const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: white;
+        max-height: 100vh;
+        background-color: var(--brandBrown);
+    }
+
+    main {
+        height: 200vh;
     }
 
     :root {
         --brandBrown : #201A15;
+        --brandRed: #CC231B;
+        --maxWidth: 1300px;
+    }
+    button, svg, img, li {
+        cursor: pointer;
     }
 `
