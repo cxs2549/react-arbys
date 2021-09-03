@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        font-family: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -20,13 +20,14 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     main {
-        height: 200vh;
+        height: 100vh;
     }
 
     :root {
         --brandBrown : #201A15;
         --brandRed: #CC231B;
         --maxWidth: 1300px;
+        --borderColor: #606060;
     }
     button, svg, img, li {
         cursor: pointer;

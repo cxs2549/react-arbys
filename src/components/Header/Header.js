@@ -6,18 +6,22 @@ import { AiOutlineUser } from 'react-icons/ai'
 import './Burger/burger.css'
 import useOnClickOutside from 'use-onclickoutside'
 import Headroom from 'react-headroom'
+import { Link, NavLink } from 'react-router-dom'
 
 const StyledHeader = styled.div`
 	height: 76px;
 	top: 0;
 	left: 0;
-	background-color: var(--brandBrown);
+	background-color: var(--brandRed);
 	width: 100%;
 	transition: transform .5s;
 	position: relative;
 	z-index: 1000;
-	@media (min-width: 1280px) {
-		height: 88px
+	/* @media (min-width: 1280px) {
+		height: 88px;
+	} */
+	#bigWrap {
+		height: 123px;
 	}
 
 	#wrapper {
@@ -32,10 +36,10 @@ const StyledHeader = styled.div`
 		top: 0;
 		left: 0;
 		width: 100%;
-		max-width: var(--maxWidth);;
+		max-width: var(--maxWidth);
 		@media (min-width: 1280px) {
 			/* justify-content: flex-start; */
-			height: 88px;
+			/* height: 88px; */
 			gap: 2rem;
 			left: 50%;
 			transform: translateX(-50%);
@@ -43,9 +47,19 @@ const StyledHeader = styled.div`
 		@media (min-width: 1316px) {
 			padding: 0;
 		}
-		svg {
-			font-size: 2.2rem;
+		.activeMenu {
+			opacity: 1;
+			&::after {
+				position: absolute;
+				content: '';
+				right: 0;
+				top: 24px;
+				width: 100%;
+				height: 4px;
+				background-color: #fff;
+			}
 		}
+
 		> div {
 			display: flex;
 			align-items: center;
@@ -57,7 +71,7 @@ const StyledHeader = styled.div`
 			#menu {
 				position: fixed;
 				width: 100%;
-				top: 72px;
+				top: 76px;
 				right: ${(props) => (props.open ? '0' : '-100%')};
 				max-width: 100%;
 				transition: right .25s;
@@ -68,21 +82,30 @@ const StyledHeader = styled.div`
 				overflow-y: scroll;
 				/* border-top: 1px solid white; */
 				/* border-bottom: 1px solid lightgray; */
+				.active {
+					background: var(--brandRed);
+					opacity: 1 !important;
+				}
 				.listItem {
 					width: 100%;
 					text-align: center;
-					padding: 1rem;
-					border-radius: 4px;
 					font-size: 150%;
-					&:hover {
-						background-color: var(--brandRed);
-						color: white;
+					display: flex;
+					a {
+						border-radius: 4px;
+						padding: 1rem;
+						width: 100%;
+						height: 100%;
+						opacity: .5;
+						&:hover {
+							opacity: 1;
+						}
 					}
 				}
 			}
 			#overlay {
 				position: fixed;
-				top: 72px;
+				top: 76px;
 				left: ${(props) => (props.open ? '0' : '-100%')};
 				width: 100%;
 				height: 100vh;
@@ -94,8 +117,6 @@ const StyledHeader = styled.div`
 		}
 
 		#logo {
-			background-image: url(${logo});
-			/* background-size: auto; */
 			background-repeat: no-repeat;
 			background-position: center center;
 			height: 80%;
@@ -136,7 +157,13 @@ const Header = () => {
 		document.body.classList.remove('modal-open')
 		setIsOpen(false)
 	}
-	const bottomLinks = [ 'menu', 'get deals', 'gift cards', 'locations' ]
+	const bottomLinks = [
+		{ name: 'home', to: '/' },
+		{ name: 'menu', to: 'menu' },
+		{ name: 'get deals', to: 'get_deals' },
+		{ name: 'gift cards', to: 'gift_cards' },
+		{ name: 'locations', to: 'locations' }
+	]
 	const menuRef = useRef()
 	useOnClickOutside(menuRef, handleClose)
 
@@ -149,54 +176,83 @@ const Header = () => {
 	}
 	return (
 		<Headroom onPin={handlePin} onUnpin={handleUnpin}>
-			<StyledHeader open={isOpen} ref={headerRef}>
-				<div id="wrapper">
-					<div className="flex gap-2 lg:gap-8">
-						<div id="logo" />
-						<ul className="hidden md:flex gap-5 xl:gap-8 text-base lg:text-base xl:text-xl font-bold">
-							{bottomLinks.map((link, i) => (
-								<li
-									key={i}
-									className="tracking-wide opacity-90 hover:text-brandRed uppercase whitespace-nowrap"
-								>
-									{link}
-								</li>
-							))}
-						</ul>
-					</div>
+			<div id="bigWrap" ref={headerRef}>
+				<StyledHeader open={isOpen}>
+					<div id="wrapper">
+						<div className="flex gap-2 lg:gap-8">
+							<div id="logo">
+								<Link to="/">
+									<img src={logo} alt="" />
+								</Link>
+							</div>
 
-					<div>
-						<div className="hidden md:flex text-base">
-							<button className="bg-brandRed font-extrabold px-3 py-2 rounded uppercase text-sm lg:text-base">
-								Start an order
-							</button>
+							<ul className="hidden md:flex gap-5 xl:gap-8 text-base lg:text-base xl:text-xl font-extrabold">
+								{bottomLinks.map((link, i) => (
+									<li
+										key={i}
+										className="tracking-wide  hover:opacity-100 uppercase whitespace-nowrap"
+									>
+										<NavLink to={link.to} end activeClassName="activeMenu" className="opacity-80 relative">{link.name}</NavLink>
+									</li>
+								))}
+							</ul>
 						</div>
-						<div id="knife">
-							<AiOutlineUser />
-						</div>
-						<div id="location">
-							<BsBag />
-						</div>
-						<div id="burger" className="md:hidden" ref={menuRef}>
-							<div id="nav-icon1" onClick={handleOpen}>
-								<span />
-								<span />
-								<span />
+						<div>
+							<div className="hidden lg:flex items-center">
+								<button className=" text-white opacity-90 hover:opacity-100  px-1  py-2 rounded uppercase  flex items-center  gap-1">
+									<div className="opacity-80 text-2xl">
+										<i className="fa fa-map-marker" aria-hidden="true" />
+									</div>
+									<div className="flex flex-col items-start text-sm">
+										<span className="ml-4">my arby's</span>
+										<div className="flex items-center justify-center rounded-full px-3 py-1 border-2 border-white">
+											<p className="font-bold pt-0.5">Hollywood... </p>
+											<div className="text-sm ml-2 pt-1">
+												<i class="fa fa-chevron-down" aria-hidden="true" />
+											</div>
+										</div>
+									</div>
+								</button>
 							</div>
-							<div id="menu" className="pt-6 pb-5 px-8">
-								<ul className="flex flex-col items-center justify-center uppercase font-bold">
-									{bottomLinks.map((link, i) => (
-										<li key={i} className="listItem">
-											{link}
-										</li>
-									))}
-								</ul>
+							<div id="knife">
+								<AiOutlineUser />
 							</div>
-							<div id="overlay" onClick={handleClose} />
+							<div id="location">
+								<BsBag />
+							</div>
+							<div id="burger" className="md:hidden" ref={menuRef}>
+								<div id="nav-icon1" onClick={handleOpen}>
+									<span />
+									<span />
+									<span />
+								</div>
+								<div id="menu" className="p-8 ">
+									<ul className="flex flex-col items-center justify-center uppercase font-bold gap-2">
+										{bottomLinks.map((link, i) => (
+											<li key={i} className="listItem" onClick={handleClose}>
+												<NavLink to={link.to} end>
+													{link.name}
+												</NavLink>
+											</li>
+										))}
+									</ul>
+								</div>
+								<div id="overlay" onClick={handleClose} />
+							</div>
 						</div>
+					</div>
+				</StyledHeader>
+				<div className="flex items-center text-sm font-medium py-3 px-4 justify-center gap-2 lg:hidden bg-brandBrown">
+					<span className="uppercase">my arby's</span>
+						<div className="opacity-80">
+							<i className="fa fa-map-marker" aria-hidden="true" />
+						</div>
+					<div className="flex gap-2 items-center border-b border-borderColor">
+						<button className="">Hollywood - W Sunset Blvd</button>
+						<i class="fa fa-chevron-down" aria-hidden="true" />
 					</div>
 				</div>
-			</StyledHeader>
+			</div>
 		</Headroom>
 	)
 }
