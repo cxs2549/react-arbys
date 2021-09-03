@@ -18,6 +18,9 @@ export const GlobalStyles = createGlobalStyle`
         max-height: 100vh;
         background-color: var(--brandBrown);
     }
+    .freezeflow {
+        overflow: hidden;
+    }
 
    
 

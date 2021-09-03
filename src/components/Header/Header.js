@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import logo from '../../assets/logo.png'
 import { BsBag } from 'react-icons/bs'
 import { AiOutlineUser } from 'react-icons/ai'
+import { FiChevronDown } from 'react-icons/fi'
 import './Burger/burger.css'
 import useOnClickOutside from 'use-onclickoutside'
 import Headroom from 'react-headroom'
@@ -130,10 +131,8 @@ const StyledHeader = styled.div`
 
 		> div:last-of-type {
 			justify-self: flex-end;
-			gap: 1rem;
-			@media (min-width: 1024px) {
-				gap: 2rem;
-			}
+			gap: 1.5rem;
+
 			#knife,
 			#location {
 				svg {
@@ -149,12 +148,12 @@ const Header = () => {
 	const [ isOpen, setIsOpen ] = useState(false)
 	const handleOpen = () => {
 		document.getElementById('nav-icon1').classList.toggle('open')
-		document.body.classList.toggle('modal-open')
+		document.body.classList.toggle('freezeflow')
 		setIsOpen(!isOpen)
 	}
 	const handleClose = () => {
 		document.getElementById('nav-icon1').classList.remove('open')
-		document.body.classList.remove('modal-open')
+		document.body.classList.remove('freezeflow')
 		setIsOpen(false)
 	}
 	const bottomLinks = [
@@ -186,13 +185,20 @@ const Header = () => {
 								</Link>
 							</div>
 
-							<ul className="hidden md:flex gap-5 xl:gap-8 text-base lg:text-base xl:text-xl font-extrabold">
+							<ul className="hidden md:flex gap-5 xl:gap-12 text-lg xl:text-xl font-extrabold">
 								{bottomLinks.map((link, i) => (
 									<li
 										key={i}
 										className="tracking-wide  hover:opacity-100 uppercase whitespace-nowrap"
 									>
-										<NavLink to={link.to} end activeClassName="activeMenu" className="opacity-80 relative">{link.name}</NavLink>
+										<NavLink
+											to={link.to}
+											end
+											activeClassName="activeMenu"
+											className="opacity-80 relative"
+										>
+											{link.name}
+										</NavLink>
 									</li>
 								))}
 							</ul>
@@ -205,20 +211,26 @@ const Header = () => {
 									</div>
 									<div className="flex flex-col items-start text-sm">
 										<span className="ml-4">my arby's</span>
-										<div className="flex items-center justify-center rounded-full px-3 py-1 border-2 border-white">
-											<p className="font-bold pt-0.5">Hollywood... </p>
-											<div className="text-sm ml-2 pt-1">
-												<i class="fa fa-chevron-down" aria-hidden="true" />
+										<div className="flex items-center justify-center rounded-full px-3 py-1  border-2 border-white">
+											<p className="font-bold pt-0.5 text-xs">
+												Hollywood...{' '}
+											</p>
+											<div className=" ml-1">
+												<FiChevronDown />
 											</div>
 										</div>
 									</div>
 								</button>
 							</div>
 							<div id="knife">
-								<AiOutlineUser />
+								<Link to="/account">
+									<AiOutlineUser />
+								</Link>
 							</div>
 							<div id="location">
-								<BsBag />
+								<Link to="/bag">
+									<BsBag />
+								</Link>
 							</div>
 							<div id="burger" className="md:hidden" ref={menuRef}>
 								<div id="nav-icon1" onClick={handleOpen}>
@@ -244,12 +256,12 @@ const Header = () => {
 				</StyledHeader>
 				<div className="flex items-center text-sm font-medium py-3 px-4 justify-center gap-2 lg:hidden bg-brandBrown">
 					<span className="uppercase">my arby's</span>
-						<div className="opacity-80">
-							<i className="fa fa-map-marker" aria-hidden="true" />
-						</div>
+					<div className="opacity-80">
+						<i className="fa fa-map-marker" aria-hidden="true" />
+					</div>
 					<div className="flex gap-2 items-center border-b border-borderColor">
 						<button className="">Hollywood - W Sunset Blvd</button>
-						<i class="fa fa-chevron-down" aria-hidden="true" />
+						<FiChevronDown />
 					</div>
 				</div>
 			</div>

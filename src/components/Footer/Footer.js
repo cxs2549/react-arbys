@@ -42,7 +42,7 @@ const Footer = () => {
 				<div className="mb-8 mx-auto md:hidden">
 					<img src={logo} className="w-20 mx-auto" alt="" />
 				</div>
-				<div className="flex flex-col md:grid grid-cols-4 items-center md:items-start md:gap-4 justify-center">
+				<div className="flex flex-col md:grid grid-cols-3 lg:grid-cols-4 items-center md:items-start md:gap-4 justify-center">
 					{linkGroup.map((group, i) => (
 						<div key={i} className="mb-8">
 							<h3 className="mb-3 uppercase font-bold text-xl text-center md:text-left">{group.name}</h3>
