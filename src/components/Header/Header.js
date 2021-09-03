@@ -57,6 +57,7 @@ const StyledHeader = styled.div`
 				top: 24px;
 				width: 100%;
 				height: 4px;
+				border-radius: 99999px;
 				background-color: #fff;
 			}
 		}

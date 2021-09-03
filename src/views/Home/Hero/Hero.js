@@ -3,12 +3,13 @@ import hero from '../../../assets/hero.png'
 
 const StyledHero = styled.div`
 	padding: 3rem 1.5rem;
-	border-bottom: 1px solid lightgray;
 	display: grid;
 	gap: 2rem;
 	@media (min-width: 1280px) {
 		grid-template-columns: 1fr 1fr;
         gap: 0;
+		max-width: 75%;
+		margin: 0 auto;
 	}
 	img {
 		object-fit: cover;

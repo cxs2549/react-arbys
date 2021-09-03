@@ -9,6 +9,8 @@ const StyledTreat = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
+	border-top: 1px solid lightgray;
+
 	@media (min-width: 1280px) {
 		flex-flow: row;
         justify-content: space-between;

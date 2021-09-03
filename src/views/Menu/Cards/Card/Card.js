@@ -9,7 +9,7 @@ const StyledCard = styled.div`
 `
 const Card = ({ card }) => {
 	return (
-		<StyledCard className="border rounded shadow p-4">
+		<StyledCard className="rounded shadow p-4">
 			<img src={card.img} className="sm:w-6/12" alt="" />
 			<div>
 				<div className="font-extrabold uppercase text-base xl:text-lg">
