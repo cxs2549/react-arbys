@@ -3,7 +3,7 @@ import Header from './components/Header/Header'
 import { GlobalStyles } from './globalStyles'
 import { useRoutes } from 'react-router'
 import Home from './views/Home/Home'
-import Menu from './views/Home/Menu/Menu'
+import Menu from './views/Menu/Menu'
 import NotFound from './views/NotFound/NotFound'
 
 const routes = [

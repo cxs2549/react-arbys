@@ -74,10 +74,10 @@ const Footer = () => {
 				</div>
 				<div className="md:flex flex-col justify-center  items-center pt-8 gap-3">
 					<div className="hidden md:flex items-center">
-						<img src={logo} className="w-12 top-4 right-4" alt="" />
+						<img src={logo} className="w-16 mb-2" alt="" />
 					</div>
 					<p className=" text-xs text-center">
-						&copy; 2021 Super Vision Design for Arby's IP Holder, LLC. All Rights
+						&copy; 2021 SuperVision Design for Arby's IP Holder, LLC. All Rights
 						Reserved. <br />
 						v.1 built w React
 					</p>

@@ -19,9 +19,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: var(--brandBrown);
     }
 
-    main {
-        height: 100vh;
-    }
+   
 
     :root {
         --brandBrown : #201A15;
