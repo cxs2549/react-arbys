@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/react-arbys/static/css/main.f624d53d.chunk.css",
+    "main.js": "/react-arbys/static/js/main.4872295a.chunk.js",
+    "main.js.map": "/react-arbys/static/js/main.4872295a.chunk.js.map",
+    "runtime-main.js": "/react-arbys/static/js/runtime-main.3c6279be.js",
+    "runtime-main.js.map": "/react-arbys/static/js/runtime-main.3c6279be.js.map",
+    "static/js/2.d34a4714.chunk.js": "/react-arbys/static/js/2.d34a4714.chunk.js",
+    "static/js/2.d34a4714.chunk.js.map": "/react-arbys/static/js/2.d34a4714.chunk.js.map",
+    "index.html": "/react-arbys/index.html",
+    "static/css/main.f624d53d.chunk.css.map": "/react-arbys/static/css/main.f624d53d.chunk.css.map",
+    "static/js/2.d34a4714.chunk.js.LICENSE.txt": "/react-arbys/static/js/2.d34a4714.chunk.js.LICENSE.txt",
+    "static/media/chicken.02660dc2.png": "/react-arbys/static/media/chicken.02660dc2.png",
+    "static/media/desserts.4cda60c1.png": "/react-arbys/static/media/desserts.4cda60c1.png",
+    "static/media/drinks.1cb771e8.png": "/react-arbys/static/media/drinks.1cb771e8.png",
+    "static/media/hero.089dbe00.png": "/react-arbys/static/media/hero.089dbe00.png",
+    "static/media/kids.e6d8d9a5.png": "/react-arbys/static/media/kids.e6d8d9a5.png",
+    "static/media/market.a1205976.png": "/react-arbys/static/media/market.a1205976.png",
+    "static/media/meals.6f0e30a8.png": "/react-arbys/static/media/meals.6f0e30a8.png",
+    "static/media/sides.2dd716da.png": "/react-arbys/static/media/sides.2dd716da.png",
+    "static/media/sliders.d1e66069.png": "/react-arbys/static/media/sliders.d1e66069.png",
+    "static/media/slowroast.34b494c4.png": "/react-arbys/static/media/slowroast.34b494c4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3c6279be.js",
+    "static/js/2.d34a4714.chunk.js",
+    "static/css/main.f624d53d.chunk.css",
+    "static/js/main.4872295a.chunk.js"
+  ]
+}
